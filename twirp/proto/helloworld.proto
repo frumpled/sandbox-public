@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package com.frumpled.sandbox.helloworld;
+option go_package = "twirp/proto/generated;pb";
+
+service HelloWorld {
+  rpc Hello(HelloReq) returns (HelloResp);
+}
+
+message HelloReq {
+  string subject = 1;
+}
+
+message HelloResp {
+  string text = 1;
+}
