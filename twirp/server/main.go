@@ -1,4 +1,4 @@
-package main
+package server
 
 import (
 	"context"
@@ -11,9 +11,12 @@ import (
 type HelloWorldServer struct{}
 
 func (s *HelloWorldServer) Hello(ctx context.Context, req *pb.HelloReq) (*pb.HelloResp, error) {
-	fmt.Printf("Received request: %+v\n", req)
 
-	return &pb.HelloResp{Text: "Hello " + req.Subject}, nil
+	resp := &pb.HelloResp{Text: "Hello " + req.Subject}
+
+	fmt.Printf("%+v -> %+v\n", req, resp)
+
+	return resp, nil
 }
 
 // Run the implementation in a local server
